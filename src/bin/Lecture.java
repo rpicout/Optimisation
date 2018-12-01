@@ -67,6 +67,7 @@ public class Lecture {
 
 		DataCenter.setNbrerangee(nombreRangees);
 		DataCenter.setNbreslots(nombreEmplacements);
+		DataCenter.setNbreGroupe(nombreGroupes);
 		Serveur.setNombreTotalServeur(nombreServeurs);
 		EmplacementIndisponible.setNombreTotalIndispo(nombreIndisponible);
 
@@ -101,7 +102,7 @@ public class Lecture {
 					"le serveur " + i + " prend " + emplacement + " emplacements et a une capacité de " + capacite);
 
 			ArrayList<Serveur> listeServeur = new ArrayList<Serveur>();
-			Serveur s = new Serveur(i, emplacement, capacite, listeServeur);
+			Serveur s = new Serveur(i, emplacement, capacite, 0, listeServeur);
 			ligneLocale++;
 
 		}

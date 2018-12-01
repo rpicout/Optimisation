@@ -4,14 +4,23 @@ public class DataCenter {
 
 	private static int nbrerangee;
 	private static int nbreslots;
+	private static int nbreGroupe;
 	
-	private static int[][] matriceDataCenter;
+	public static int getNbreGroupe() {
+		return nbreGroupe;
+	}
 
-	public static int[][] getMatriceDataCenter() {
+	public static void setNbreGroupe(int nbreGroupe) {
+		DataCenter.nbreGroupe = nbreGroupe;
+	}
+
+	private static Serveur[][] matriceDataCenter;
+
+	public static Serveur[][] getMatriceDataCenter() {
 		return matriceDataCenter;
 	}
 
-	public static void setMatriceDataCenter(int[][] matriceDataCenter) {
+	public static void setMatriceDataCenter(Serveur[][] matriceDataCenter) {
 		DataCenter.matriceDataCenter = matriceDataCenter;
 	}
 

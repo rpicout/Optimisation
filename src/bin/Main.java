@@ -4,7 +4,7 @@ import model.DataCenter;
 
 public class Main {
 
-	static String path = "D:\\HalfPeter\\Cours\\Master 2\\Projet_Optimisation\\poly.txt";
+	static String path = "C:\\Users\\Lautredou\\git\\Optimisation2\\Google_HashCode_215\\dc.txt";
 
 	public static void main(String[] args) {
 
@@ -13,6 +13,10 @@ public class Main {
 		MatriceDataCenter.MatriceDataCenter();
 		
 		Gloutonne.gloutonne();
+		
+		Sortie.sortie();
+		
+		Scoring.scoring();
 	}
 
 }

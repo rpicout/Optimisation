@@ -27,30 +27,35 @@ public class Gloutonne {
 
 		}
 
+		Serveur indispo = new Serveur(100000, 0, 0, 0, null);
+		int size = Serveur.listeServeur.size();
+		Serveur.listeServeur.remove(size - 1);
+
 		// On affecte les serveurs dans l'ordre de la liste trié au premier endroit
 		// disponible
-		int[][] matriceDC = DataCenter.getMatriceDataCenter();
+		Serveur[][] matriceDC = DataCenter.getMatriceDataCenter();
 
 		for (Serveur R : Serveur.listeServeur) {
 			for (int i = 0; i < matriceDC.length; i++) {
-				try {
-					for (int j = 0; j < matriceDC[i].length; j++) {
-						if (matriceDC[i][j] == 0 && matriceDC[i][j + R.getLongueur()] == 0) {
-							for (int k = 0; k < R.getLongueur(); k++) {
-								matriceDC[i][j + k] = (R.getId() + 10);
-							}
-							i = matriceDC.length;
-							break;
+				for (int j = 0; j < matriceDC[i].length; j++) {
+					if (verification(R, i, j)) {
+						for (int k = 0; k < R.getLongueur(); k++) {
+							matriceDC[i][j + k] = R;
 						}
+						i = matriceDC.length;
+						break;
 					}
-				} catch (ArrayIndexOutOfBoundsException e) {
 				}
 			}
 		}
 		// Affichage de la matrice après l'attribution des serveurs
 		for (int i = 0; i < matriceDC.length; i++) {
 			for (int j = 0; j < matriceDC[i].length; j++) {
-				System.out.print(matriceDC[i][j]);
+				try {
+					System.out.print(matriceDC[i][j].getId());
+				} catch (NullPointerException e) {
+					System.out.print(matriceDC[i][j]);
+				}
 				System.out.print(" ");
 			}
 			System.out.println();
@@ -59,9 +64,60 @@ public class Gloutonne {
 		// On enregistre la matrice DC
 		DataCenter.setMatriceDataCenter(matriceDC);
 
+		// Attribution des groupes
+		int nombregroupe = DataCenter.getNbreGroupe();
+		List<Integer> listeGroupe = new ArrayList<Integer>();
+		List<Integer> listeGroupe2 = new ArrayList<Integer>();
+		List<Serveur> listeServeur = new ArrayList<Serveur>();
+		for (int i = 0; i < nombregroupe; i++) {
+			listeGroupe.add(i);
+		}
+		
+		for( int i=0; i<600; i++) {
+			listeGroupe2.addAll(listeGroupe);
+		}
+
+		for (int i = 0; i < matriceDC.length; i++) {
+			for (int j = 0; j < matriceDC[i].length; j++) {
+				if (!listeServeur.contains(matriceDC[i][j]) && matriceDC[i][j].getId() != 100000) {
+					listeServeur.add(matriceDC[i][j]);
+				}
+			}
+		}
+		int k =0;
+//		System.out.println("début du test");
+		for(Serveur R : listeServeur) {
+//			System.out.println(R.getId());
+			R.setGroupe(listeGroupe2.get(k));
+			k++;
+		}
+
 		System.out.println("durée gloutonne : " + (System.currentTimeMillis() - debut) + " ms");
 		System.out.println("****Gloutonne terminée****");
 		System.out.println();
 	}
 
+	// Verifie qu'un serveur S ne rentre pas en conflit avec un emplacement
+	// indisponible
+	public static boolean verification(Serveur serveur, int row, int slot) {
+		int longueur = serveur.getLongueur();
+		Serveur[][] matriceDC = DataCenter.getMatriceDataCenter();
+		boolean bool = true;
+
+		try {
+			for (int i = 0; i < longueur; i++) {
+				if (matriceDC[row][slot + i] != null) {
+					bool = false;
+					break;
+				} else {
+					bool = true;
+				}
+
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			bool = false;
+		}
+
+		return bool;
+	}
 }
