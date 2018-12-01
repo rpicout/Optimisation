@@ -10,8 +10,18 @@ import model.Serveur;
 import model.ServeurSortie;
 
 public class Sortie {
+
+	/**
+	 * Description : sortie conforme à celle attendue par le google hash Code
+	 * 
+	 * Prend la matrice DataCenter et formate le contenu en fonction de la sortie
+	 * attendue
+	 * 
+	 * 
+	 * @author Pierre Lautrédou
+	 */
 	public static void sortie() {
-		
+
 		System.out.println("****AFFICHAGE DE LA SORTIE*****");
 
 		Serveur[][] matriceDC = DataCenter.getMatriceDataCenter();
@@ -26,11 +36,11 @@ public class Sortie {
 				}
 			}
 		}
-		
+
 		Collections.sort(listeServeur, ServeurSortie.ID_COMPARATOR);
 
 		for (ServeurSortie R : listeServeur) {
-			System.out.println( R.getRow() + " " + R.getSlot() + " " + R.getGroupe());
+			System.out.println(R.getRow() + " " + R.getSlot() + " " + R.getGroupe());
 		}
 		System.out.println();
 	}

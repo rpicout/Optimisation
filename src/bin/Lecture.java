@@ -13,6 +13,12 @@ import model.Serveur;
 
 public class Lecture {
 
+	/**
+	 * Description : Lecture du fichier contenant les données du problème
+	 * 
+	 * @param  path : chemin vers le fichier
+	 * @author Pierre Lautrédou
+	 */
 	public static void lecture(String path) {
 
 		long debut = System.currentTimeMillis();

@@ -7,6 +7,17 @@ import model.DataCenter;
 import model.Serveur;
 
 public class Scoring {
+	
+	/**
+	 * Description : Calcul du score
+	 * 
+	 * Calcul du score en fonction de la matrice DataCenter
+	 * (à vérifier car j'ai pas tout compris)
+	 * 
+	 * 
+	 * 
+	 * @author Pierre Lautrédou
+	 */
 	public static void scoring() {
 
 		// Creation de la matrice de Scoring

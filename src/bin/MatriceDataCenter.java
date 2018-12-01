@@ -6,6 +6,19 @@ import model.Serveur;
 
 public class MatriceDataCenter {
 
+	/**
+	 * Description : création de la matrice DataCenter qui nous servira pour la
+	 * suite du probleme.
+	 * 
+	 * 
+	 * la matrice est créée avec la taille indiquée dans le fichier de données et
+	 * les serveurs indisponibles sont indiqués de la manière suivante : 
+	 * new Serveur(100000, 0, 100000, 0, null)
+	 * 
+	 * 
+	 * 
+	 * @author Pierre Lautrédou
+	 */
 	public static void MatriceDataCenter() {
 		long debut = System.currentTimeMillis();
 		System.out.println("****Création de la matrice DataCenter démarrée****");

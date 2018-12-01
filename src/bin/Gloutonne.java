@@ -11,6 +11,18 @@ import model.Serveur;
 
 public class Gloutonne {
 
+	/**
+	 * Description : récupère la matrice DataCenter et positionne les serveur selon
+	 * une méthode gloutonne
+	 * 
+	 * les serveurs sont triés par ordre décroisant de capacité, sont attribué au
+	 * datacenter en de haut en bas et de gauche à droite. L'attribution des groupe
+	 * est effectué alternativement
+	 * 
+	 * 
+	 * 
+	 * @author Pierre Lautrédou
+	 */
 	public static void gloutonne() {
 		System.out.println("**** Gloutonne comencée****");
 		long debut = System.currentTimeMillis();
@@ -72,8 +84,8 @@ public class Gloutonne {
 		for (int i = 0; i < nombregroupe; i++) {
 			listeGroupe.add(i);
 		}
-		
-		for( int i=0; i<600; i++) {
+
+		for (int i = 0; i < 600; i++) {
 			listeGroupe2.addAll(listeGroupe);
 		}
 
@@ -84,10 +96,10 @@ public class Gloutonne {
 				}
 			}
 		}
-		int k =0;
-//		System.out.println("début du test");
-		for(Serveur R : listeServeur) {
-//			System.out.println(R.getId());
+		int k = 0;
+		// System.out.println("début du test");
+		for (Serveur R : listeServeur) {
+			// System.out.println(R.getId());
 			R.setGroupe(listeGroupe2.get(k));
 			k++;
 		}
